@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  background-color: #b7ddda;
+  font-family: Inter, sans-serif;
+  font-style: italic;
+  color: darkcyan;
+}
+h1 {
+  font-size: 80px;
+}
+button {
+  padding: 5px 20px;
+  font-size: 20px;
+  background-color: #e6c4b7;
+  border: 0.5px solid gray;
+  border-radius: 8px;
+}
+input {
+  padding: 5px 20px;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  background-color: #f2ece1;
+}
+label {
+  font-size: 20px;
+}
+.gap {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+#theNumber {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  color: gray;
+}
+#submit {
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+  color: darkcyan;
+}
