@@ -3,6 +3,7 @@ const maxNum = 10;
 const answer = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
 
 let guess;
+let previousGuess = null;
 let attempts = 0;
 let running = true;
 
@@ -32,7 +33,10 @@ document.getElementById("submit").onclick = function () {
   } else if (guess < minNum || guess > maxNum) {
     window.alert(`Please pick a number between ${minNum} to ${maxNum}`);
   } else {
-    attempts++;
+    if (guess !== previousGuess) {
+      attempts++;
+    }
+    previousGuess = guess;
     if (guess > answer) {
       showPopUp(`Too High! Try again.`);
     } else if (guess < answer) {
