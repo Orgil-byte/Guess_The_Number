@@ -51,6 +51,9 @@ label {
   font-weight: 700;
   color: darkcyan;
 }
+#restart {
+  display: none;
+}
 #popup {
   font-size: 80px;
   font-family: Inter, sans-serif;

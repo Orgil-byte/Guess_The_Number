@@ -6,18 +6,21 @@ let guess;
 let attempts = 0;
 let running = true;
 
-function refreshBtn() {
-  document.getElementById("restart").onclick = function () {
-    setTimeout(() => {
-      location.reload();
-    }, 1);
-  };
-}
-
 function showPopUp(text, color = "darkcyan") {
   const popup = document.getElementById("popup");
   popup.textContent = text;
   popup.style.color = color;
+}
+
+function refreshBtn() {
+  showPopUp(
+    `Congratulations, YOU WON!!! The answer was ${answer}, It took you ${attempts} attempts.`
+  );
+  const restart = document.getElementById("restart");
+  restart.onclick = function () {
+    location.reload();
+  };
+  restart.style.display = "block";
 }
 
 document.getElementById("submit").onclick = function () {
@@ -35,9 +38,6 @@ document.getElementById("submit").onclick = function () {
     } else if (guess < answer) {
       showPopUp(`Too Low! Try again.`);
     } else {
-      showPopUp(
-        `Congratulations, YOU WON!!! The answer was ${answer}, It took you ${attempts} attempts.`
-      );
       refreshBtn();
       running = false;
     }
