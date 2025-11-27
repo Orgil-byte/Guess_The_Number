@@ -18,6 +18,10 @@ button {
   background-color: #e6c4b7;
   border: 0.5px solid gray;
   border-radius: 8px;
+  transition: transform 0.2s;
+}
+button:active {
+  transform: scale(1.05);
 }
 input {
   padding: 5px 20px;
@@ -41,8 +45,17 @@ label {
   font-weight: 700;
   color: gray;
 }
-#submit {
+#submit,
+#restart {
   font-family: Arial, sans-serif;
   font-weight: 700;
   color: darkcyan;
+}
+#popup {
+  font-size: 80px;
+  font-family: Inter, sans-serif;
+  font-style: italic;
+  color: darkcyan;
+  text-align: center;
+  max-width: 1500px;
 }

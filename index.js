@@ -1,10 +1,25 @@
 const minNum = 1;
-const maxNum = 100;
+const maxNum = 10;
 const answer = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
 
 let guess;
 let attempts = 0;
 let running = true;
+
+function refreshBtn() {
+  document.getElementById("restart").onclick = function () {
+    setTimeout(() => {
+      location.reload();
+    }, 1);
+  };
+}
+
+function showPopUp(text, color = "darkcyan") {
+  const popup = document.getElementById("popup");
+  popup.textContent = text;
+  popup.style.color = color;
+}
+
 document.getElementById("submit").onclick = function () {
   if (!running) return;
   guess = document.getElementById("theNumber").value;
@@ -16,13 +31,14 @@ document.getElementById("submit").onclick = function () {
   } else {
     attempts++;
     if (guess > answer) {
-      window.alert(`Too High! Try again.`);
+      showPopUp(`Too High! Try again.`);
     } else if (guess < answer) {
-      window.alert(`Too Low! Try again.`);
+      showPopUp(`Too Low! Try again.`);
     } else {
-      window.alert(
-        `Congratulations, YOU WON!!! The answer was ${answer}, It took you ${attempts} attempts`
+      showPopUp(
+        `Congratulations, YOU WON!!! The answer was ${answer}, It took you ${attempts} attempts.`
       );
+      refreshBtn();
       running = false;
     }
   }
