@@ -57,16 +57,18 @@ document.getElementById("submit").onclick = function () {
       showPopUp(
         `You Won!!! The number was ${answer}. It cost you ${
           5 - attempts
-        } health.`
+        } health.`,
+        "green"
       );
       submit.style.display = `none`;
       running = false;
+      return;
     }
     if (attempts === 0) {
       showHealth(`${attempts} ♥️ You Lost!!!`);
       submit.style.display = `none`;
       refreshBtn();
-      showPopUp(`You Lost!!! The number was ${answer}`);
+      showPopUp(`You Lost!!! The number was ${answer}`, "red");
     }
   }
 };
