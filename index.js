@@ -5,7 +5,7 @@ const answer = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
 let guess;
 let previousGuess = null;
 let allGuesses = [];
-let attempts = 0;
+let attempts = 5;
 let running = true;
 
 function showPopUp(text, color = "darkcyan") {
@@ -13,11 +13,13 @@ function showPopUp(text, color = "darkcyan") {
   popup.textContent = text;
   popup.style.color = color;
 }
+function showHealth(text, color = "darkcyan") {
+  const popup = document.getElementById("health");
+  popup.textContent = text;
+  popup.style.color = color;
+}
 
 function refreshBtn() {
-  showPopUp(
-    `Congratulations, YOU WON!!! The answer was ${answer}, It took you ${attempts} attempts.`
-  );
   const restart = document.getElementById("restart");
   restart.onclick = function () {
     location.reload();
@@ -41,7 +43,8 @@ document.getElementById("submit").onclick = function () {
     allGuesses.push(guess);
 
     if (guess !== previousGuess) {
-      attempts++;
+      attempts--;
+      showHealth(`${attempts} ♥️`);
     }
     previousGuess = guess;
 
@@ -51,7 +54,19 @@ document.getElementById("submit").onclick = function () {
       showPopUp(`Too Low! Try again.`);
     } else {
       refreshBtn();
+      showPopUp(
+        `You Won!!! The number was ${answer}. It cost you ${
+          5 - attempts
+        } health.`
+      );
+      submit.style.display = `none`;
       running = false;
+    }
+    if (attempts === 0) {
+      showHealth(`${attempts} ♥️ You Lost!!!`);
+      submit.style.display = `none`;
+      refreshBtn();
+      showPopUp(`You Lost!!! The number was ${answer}`);
     }
   }
 };
