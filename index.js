@@ -33,9 +33,11 @@ document.getElementById("submit").onclick = function () {
   guess = Number(guess);
   if (isNaN(guess)) {
     window.alert(`Please enter a number not text`);
-  } else if (guess < minNum || guess > maxNum) {
+  }
+  if (guess < minNum || guess > maxNum) {
     window.alert(`Please pick a number between ${minNum} to ${maxNum}`);
-  } else {
+  }
+  if (Number(guess)) {
     if (allGuesses.includes(guess)) {
       showPopUp(`You already wrote this number. Try a different one!`);
       return;
@@ -50,9 +52,11 @@ document.getElementById("submit").onclick = function () {
 
     if (guess > answer) {
       showPopUp(`Too High! Try again.`);
-    } else if (guess < answer) {
+    }
+    if (guess < answer) {
       showPopUp(`Too Low! Try again.`);
-    } else {
+    }
+    if (guess === answer) {
       refreshBtn();
       showPopUp(
         `You Won!!! The number was ${answer}. It cost you ${
